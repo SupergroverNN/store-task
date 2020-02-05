@@ -1,12 +1,8 @@
 .main {
-  position: absolute;
-  left: 0;
   width: 250px;
-  height: 100%;
-  z-index: 1;
+  min-height: calc(100vh - 130px);
   background-color: #cacaca;
   .content {
-    margin-top: 50px;
     padding: 30px 20px;
   }
 }
