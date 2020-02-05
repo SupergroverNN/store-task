@@ -14,7 +14,7 @@ const Footer = () => {
           <img src={instagram} alt="instagram logo"/>
           <img src={vk} alt="vk logo"/>
         </div>
-        <span className={style.copyright}>© Supergrover 2020</span>
+        <span className={style.copyright}>© SupergroverNN 2020</span>
       </div>
     </div>
   );

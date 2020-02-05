@@ -9,7 +9,7 @@ const Header = () => {
   const [active, setActive] = useState('home');
   return (
     <div className={style.main}>
-      <img src={logo} title="Supergrover store" alt="main logo" />
+      <img src={logo} title="SupergroverNN store" alt="main logo" />
       <nav className={style.menu}>
         {renderMenu(active, setActive)}
       </nav>

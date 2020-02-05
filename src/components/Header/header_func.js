@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Header.module.scss";
 
-export const menu = ["home", "sell-out", "employees", "contacts", "basket"];
+export const menu = ["home", "sell-out", "employees", "info about you", "basket"];
 
 export function renderMenu (active, setActive) {
   return (

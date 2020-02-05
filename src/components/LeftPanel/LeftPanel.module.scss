@@ -4,5 +4,15 @@
   background-color: #cacaca;
   .content {
     padding: 30px 20px;
+    .location_info {
+      margin-bottom: 30px;
+      font-family: 'Open Sans', sans-serif;
+      span {
+        font-weight: 700;
+      }
+      p {
+        margin: 10px;
+      }
+    }
   }
 }
