@@ -1,0 +1,12 @@
+.main {
+  position: absolute;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  z-index: 1;
+  background-color: #cacaca;
+  .content {
+    margin-top: 50px;
+    padding: 30px 20px;
+  }
+}
