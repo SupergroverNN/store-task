@@ -5,4 +5,9 @@
   background: url('../../assets/images/main_bg2.png') no-repeat;
   background-size: cover;
   z-index: 1;
+  .central_content {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 130px);
+  }
 }

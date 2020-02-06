@@ -3,15 +3,18 @@ import style from "./MainPage.module.scss";
 import LeftPanel from "../LeftPanel/LeftPanel";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import ItemsCard from "../ItemsCard/ItemsCard";
 
 const MainPage = () => {
   return (
     <>
       <div className={style.main}>
         <Header />
-        <LeftPanel />
+        <div className={style.central_content}>
+          <LeftPanel />
+          <ItemsCard />
+        </div>
         <Footer />
-        <div className={style.main_bg}></div>
       </div>
     </>
   );
