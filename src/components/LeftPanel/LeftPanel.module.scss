@@ -1,18 +1,39 @@
 .main {
   width: 250px;
   min-height: calc(100vh - 130px);
-  background-color: #cacaca;
+  background-color: #111111ee;
+  color: #fafafa;
+  border-right: 1px solid #fac4ba;
+
   .content {
     padding: 30px 20px;
     .location_info {
       margin-bottom: 30px;
       font-family: 'Open Sans', sans-serif;
+      color: #fafafa;
       span {
         font-weight: 700;
       }
       p {
         margin: 10px;
       }
+    }
+  }
+}
+.filter_wrapper {
+  margin-top: 20px;
+  ul {
+    list-style: none;
+    color: #131313;
+    li {
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      width: 60px;
+      background-color: #fafafa;
+      border: 1px solid red;
     }
   }
 }

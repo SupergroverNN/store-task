@@ -4,7 +4,6 @@ import { getLocationInfo } from "./leftPanel_func";
 
 const LeftPanel = () => {
   const [data, setData] = useState({
-    loc: "no data",
     city: "no data"
   });
 
@@ -17,10 +16,15 @@ const LeftPanel = () => {
         <div className={style.location_info}>
           <span>Your city: </span>
           <p>{data.city}</p>
-          <span>Your location: </span>
-          <p>{data.loc}</p>
         </div>
         <h4>Filters:</h4>
+        {/* <div className={style.filter_wrapper}>
+          <ul>
+            <li>Nose</li>
+            <li>Color</li>
+            <li>Price</li>
+          </ul>
+        </div> */}
       </div>
     </div>
   );
