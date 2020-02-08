@@ -90,7 +90,7 @@ export function googleSignOut(setData) {
 export function renderContent(data, setData) {
   if (data && data.picture) {
     return (
-      <div className={style.signout_wrapper}>
+      <div className={`${style.auth} ${style.sign_in}`}>
         <img src={data.picture} alt="signout"></img>
         <p>{data.name}</p>
         <button id="signout" onClick={() => googleSignOut(setData)} type="button">

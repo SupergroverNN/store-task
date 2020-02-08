@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Header.module.scss";
 import { renderMenu, renderContent } from "./header_func";
 
@@ -6,6 +6,7 @@ const logo = require("../../assets/images/main_logo.jpg");
 
 const Header = props => {
   const { active, order, setIsBasket, setIsOrders, setActive } = props;
+  const [data, setData] = useState(null);
   return (
     <div className={style.main}>
       <img src={logo} title="SupergroverNN store" alt="main logo" />
@@ -15,7 +16,7 @@ const Header = props => {
           className={`${style.red_circle} ${Object.keys(order).length ? style.active : ""}`}
         ></div>
       </nav>
-      {renderContent()}
+      {renderContent(data, setData)}
     </div>
   );
 };
