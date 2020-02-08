@@ -1,8 +1,13 @@
 import React from "react";
 import style from "./ItemsCard.module.scss";
-import one_photo from "../../assets/images/one_photo.jpg";
 import basket_icon from '../../assets/icons/basket_icon.png';
 
+const getImage = (name) => {
+  console.log(require(`../../assets/images/${name.toLowerCase()}.jpg`));
+  return (
+    <img src={require(`../../assets/images/${name.toLowerCase()}.jpg`)} alt={name} />
+  )
+}
 
 export const renderCards = (props) => {
   const {data, setData, order, setOrder} = props;
@@ -30,7 +35,7 @@ export const renderCards = (props) => {
   
   return data.map(item => (
     <div key={`${item.name}${item.id}`} className={style.one_item}>
-      <img src={one_photo} alt={item.name} />
+      {getImage(item.name)}
       <div className={style.params}>
         
         <div className={style.one_param}>
