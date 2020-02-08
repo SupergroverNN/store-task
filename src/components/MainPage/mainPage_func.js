@@ -105,10 +105,10 @@ export const fakeData = [
   }
 ];
 
-// export async function getProducts() {
-//   const url = "https://upbeat-jepsen-60aca0.netlify.com:443/.netlify/functions/api/products";
-//   const response = await fetch(url);
-//   const myJson = await response.json();
-//   console.log(myJson);
-//   return myJson;
-// }
+export async function getProducts() {
+  const url = "https://sheltered-depths-11645.herokuapp.com/products";
+  const response = await fetch(url);
+  const myJson = await response.json();
+  console.log(myJson);
+  return myJson;
+}

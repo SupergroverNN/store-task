@@ -32,9 +32,9 @@ const MainPage = () => {
   const [data, setData] = useState(fakeData);
   const [isBasket, setIsBasket ] = useState(true);
   const [order, setOrder] = useState({});
-  // useEffect(() => {
-  //   getProducts()
-  // }, []);
+  useEffect(() => {
+    getProducts()
+  }, []);
   return (
     <>
       {isBasket && <Basket data={data} setData={setData} order={order} setOrder={setOrder} setIsBasket={setIsBasket}/>}
