@@ -10,7 +10,7 @@ const Footer = () => {
     <div className={style.main}>
       <div className={style.content}>
         <div className={style.social}>
-          <img src={github} alt="github logo"/>
+          <a href="https://github.com/SupergroverNN/store-task" target="_blank" rel="noopener noreferrer"> <img src={github} alt="github logo"/></a>
           <img src={instagram} alt="instagram logo"/>
           <img src={vk} alt="vk logo"/>
         </div>

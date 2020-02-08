@@ -32,7 +32,7 @@ const Orders = props => {
               </tr>
               {orders.map(order => {
                 return (
-                  <tr key={order.name}>
+                  <tr key={`${order._id}`}>
                     <td>{order.name}</td>
                     <td>{order.phone}</td>
                     <td>{calcCount(order.products)}</td>

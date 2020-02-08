@@ -3,7 +3,6 @@ import style from "./ItemsCard.module.scss";
 import basket_icon from '../../assets/icons/basket_icon.png';
 
 const getImage = (name) => {
-  console.log(require(`../../assets/images/${name.toLowerCase()}.jpg`));
   return (
     <img src={require(`../../assets/images/${name.toLowerCase()}.jpg`)} alt={name} />
   )
