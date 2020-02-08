@@ -141,7 +141,6 @@ export const renderConfirm = (
 };
 
 export async function sendOrder(name, phone, products) {
-  console.log(name, phone, products);
   const url = "https://sheltered-depths-11645.herokuapp.com/orders";
   const response = await fetch(url, {
   method: "post",
@@ -156,8 +155,6 @@ export async function sendOrder(name, phone, products) {
   })
 }, {mode: 'no-cors'})
   const myJson = await response.json();
-  // console.log(myJson);
-  console.log('send order');
   return myJson;
 }
 

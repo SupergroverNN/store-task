@@ -116,7 +116,6 @@ export async function getProducts() {
     },
   });
   const myJson = await response.json();
-  console.log('get products');
   return myJson;
 }
 
@@ -132,6 +131,5 @@ export async function getOrders() {
     },
   });
   const myJson = await response.json();
-  console.log('get orders');
   return myJson;
 }
