@@ -107,8 +107,31 @@ export const fakeData = [
 
 export async function getProducts() {
   const url = "https://sheltered-depths-11645.herokuapp.com/products";
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    method: "get",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    },
+  });
   const myJson = await response.json();
-  console.log(myJson);
+  console.log('get products');
+  return myJson;
+}
+
+
+export async function getOrders() {
+  const url = "https://sheltered-depths-11645.herokuapp.com/orders";
+  const response = await fetch(url, {
+    method: "get",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    },
+  });
+  const myJson = await response.json();
+  console.log('get orders');
   return myJson;
 }

@@ -4,42 +4,28 @@ import LeftPanel from "../LeftPanel/LeftPanel";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import ItemsCard from "../ItemsCard/ItemsCard";
-import { fakeData, getProducts } from "./mainPage_func";
+import { getProducts, getOrders } from "./mainPage_func";
 import Basket from "../Basket/Basket";
-
-// {
-
-//   "Zeliboba": {
-//     "id": 1,
-//     "name": "Zeliboba",
-//     "price": 100,
-//     "color": "blue",
-//     "quantity": 10,
-//     "count": 1
-//   },
-//   "Kermit":{
-//     "id": 3,
-//     "name": "Kermit",
-//     "price": 120,
-//     "color": "green",
-//     "quantity": 11,
-//     "count": 1
-//   }
-
-// }
+import Orders from "../Orders/Orders";
 
 const MainPage = () => {
-  const [data, setData] = useState(fakeData);
-  const [isBasket, setIsBasket ] = useState(true);
+  const [data, setData] = useState([]);
+  const [isBasket, setIsBasket ] = useState(false);
+  const [isOrders, setIsOrders ] = useState(false);
   const [order, setOrder] = useState({});
+  const [orders, setOrders] = useState({});
+  const [active, setActive] = useState('home');
+
   useEffect(() => {
-    getProducts()
+    getProducts().then(res => setData(res));
+    getOrders().then(res => setOrders(res));
   }, []);
   return (
     <>
-      {isBasket && <Basket data={data} setData={setData} order={order} setOrder={setOrder} setIsBasket={setIsBasket}/>}
+      {isBasket && <Basket setActive={setActive} data={data} setData={setData} order={order} setOrder={setOrder} setIsBasket={setIsBasket}/>}
+      {isOrders && <Orders setActive={setActive} orders={orders} setIsOrders={setIsOrders}/>}
       <div className={style.main}>
-        <Header data={data} setData={setData} order={order} setOrder={setOrder} setIsBasket={setIsBasket}/>
+        <Header active={active} setActive={setActive} data={data} setData={setData} order={order} setOrder={setOrder} setIsBasket={setIsBasket} setIsOrders={setIsOrders}/>
         <div className={style.central_content}>
           <LeftPanel />
           <ItemsCard data={data} setData={setData} order={order} setOrder={setOrder} />

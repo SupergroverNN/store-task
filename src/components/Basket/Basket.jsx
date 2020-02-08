@@ -5,7 +5,7 @@ import confirmed_img from "../../assets/images/confirmed.svg";
 import { renderBasket, renderConfirm } from "./basket_func";
 
 const Basket = props => {
-  const { setIsBasket } = props;
+  const { setIsBasket, setActive } = props;
   const [status, setStatus] = useState(0);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -16,7 +16,7 @@ const Basket = props => {
         <img
           title="close"
           className={style.close_button}
-          onClick={() => setIsBasket(false)}
+          onClick={() => {setIsBasket(false); setActive("home")}}
           src={close_icon}
           alt="close"
         />

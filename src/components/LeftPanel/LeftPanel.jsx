@@ -4,7 +4,7 @@ import { getLocationInfo } from "./leftPanel_func";
 
 const LeftPanel = () => {
   const [data, setData] = useState({
-    city: "no data"
+    city: "Loading..."
   });
 
   useEffect(() => {
@@ -17,14 +17,6 @@ const LeftPanel = () => {
           <span>Your city: </span>
           <p>{data.city}</p>
         </div>
-        <h4>Filters:</h4>
-        {/* <div className={style.filter_wrapper}>
-          <ul>
-            <li>Nose</li>
-            <li>Color</li>
-            <li>Price</li>
-          </ul>
-        </div> */}
       </div>
     </div>
   );

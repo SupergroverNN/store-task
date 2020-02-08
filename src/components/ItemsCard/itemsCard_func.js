@@ -12,7 +12,7 @@ export const renderCards = (props) => {
     const tmpOrder = JSON.parse(JSON.stringify(order));
     
     tmpData.forEach((item, index) => {
-      if(item.id === id && item.quantity > 0) {
+      if(item._id === id && item.quantity > 0) {
         tmpData[index].quantity = item.quantity - 1;
         if (tmpOrder[item.name]) {
           tmpOrder[item.name].count += 1;
@@ -53,7 +53,7 @@ export const renderCards = (props) => {
           <p>{item.price}</p>
         </div>
 
-        <div onClick={()=>changeQuantity(item.id)} className={style.add_to_order}>
+        <div onClick={()=>changeQuantity(item._id)} className={style.add_to_order}>
           <p>Add to order</p>
           <img src={basket_icon} alt="add icon"/>
         </div>
