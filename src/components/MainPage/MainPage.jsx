@@ -30,7 +30,7 @@ import Basket from "../Basket/Basket";
 
 const MainPage = () => {
   const [data, setData] = useState(fakeData);
-  const [isBasket, setIsBasket ] = useState(false);
+  const [isBasket, setIsBasket ] = useState(true);
   const [order, setOrder] = useState({});
   // useEffect(() => {
   //   getProducts()

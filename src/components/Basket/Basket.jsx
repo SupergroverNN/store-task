@@ -17,7 +17,14 @@ function calcSum(order) {
 
 const Basket = props => {
   const { data, setData, order, setOrder, setIsBasket } = props;
-  const [status, setStatus] = useState(0);
+  const [status, setStatus] = useState(1);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const changeHandler = (e) => {
+    const { id, value } = e.target;
+    id === "name" ? setName(value) : setPhone(value);
+  }
   return (
     <div className={style.main}>
       <div className={style.content}>
@@ -42,7 +49,7 @@ const Basket = props => {
         {status === 1 && (
           <>
             <h1>Confirm order</h1>
-            <div className={style.orders_wrapper}>
+            <div className={`${style.orders_wrapper} ${style.confirm}`}>
               <table>
                 <tbody>
                   <tr>
@@ -63,19 +70,19 @@ const Basket = props => {
                   </tr>
                 </tbody>
               </table>
-              <div>
+              <div className={style.one_input_wrapper}>
                 <label htmlFor="name">Name</label>
-                <input id="name" type="text" />
+                <input id="name" onChange={changeHandler} type="text" value={name} />
               </div>
-              <div>
+              <div className={style.one_input_wrapper}>
                 <label htmlFor="phone">Phone</label>
-                <input id="phone" type="text" />
+                <input id="phone" onChange={changeHandler} type="number" value={phone}/>
               </div>
               <div className={style.confirm_button_wrapper}>
-                <button className={style.confirm_button} onClick={() => setStatus(0)}>
+                <button className={style.basket_button} onClick={() => setStatus(0)}>
                   Back to basket
                 </button>
-                <button className={style.confirm_button} onClick={() => setStatus(2)}>
+                <button className={style.basket_button} onClick={() => setStatus(2)}>
                   Create order
                 </button>
               </div>

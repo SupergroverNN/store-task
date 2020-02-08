@@ -13,13 +13,11 @@ export const renderCards = (props) => {
     
     tmpData.forEach((item, index) => {
       if(item.id === id && item.quantity > 0) {
-        console.log('before ', item);
         tmpData[index].quantity = item.quantity - 1;
         if (tmpOrder[item.name]) {
           tmpOrder[item.name].count += 1;
           tmpOrder[item.name].quantity = tmpData[index].quantity;
         } else {
-          console.log('add prod ', item)
           tmpOrder[item.name] = item;
           tmpOrder[item.name].count = 1;
           tmpOrder[item.name].quantity = tmpData[index].quantity;
