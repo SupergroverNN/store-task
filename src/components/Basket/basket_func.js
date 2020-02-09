@@ -1,12 +1,23 @@
 import React from "react";
 import style from "./Basket.module.scss";
 import one_photo from "../../assets/images/one_photo.jpg";
+import { getOrders, getProducts } from "../MainPage/mainPage_func";
+
+const getImage = (name) => {
+  return (
+    <img src={require(`../../assets/images/${name.toLowerCase()}.jpg`)} alt={name} />
+  )
+}
 
 function calcSum(order) {
   return Object.keys(order).reduce((acc, key) => {
     return acc + order[key].price * order[key].count;
   }, 0);
 }
+
+const checkDisable = (name, phone, order) => {
+  return name && phone && Object.keys(order).length;
+};
 
 const changeHandler = (e, changeState) => {
   const { value } = e.target;
@@ -31,7 +42,7 @@ export const renderBasket = props => {
           return (
             <tr key={`${key}`}>
               <td>
-                <img src={one_photo} alt={key} />
+                {getImage(key)}
               </td>
               <td>{key}</td>
               <td>{order[key].count}</td>
@@ -76,15 +87,8 @@ export const renderBasket = props => {
   );
 };
 
-export const renderConfirm = (
-  props,
-  name,
-  setName,
-  phone,
-  setPhone,
-  setStatus
-) => {
-  const { order } = props;
+export const renderConfirm = (props, name, setName, phone, setPhone, setStatus) => {
+  const { order, setData, setOrders, setOrder } = props;
   return (
     <>
       <table>
@@ -108,9 +112,9 @@ export const renderConfirm = (
         </tbody>
       </table>
 
-      <form className={style.footer_wrapper}>
+      <form className={style.footer_wrapper} onSubmit={event => event.preventDefault()}>
         <div className={style.one_input_wrapper}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name*</label>
           <input
             id="name"
             required
@@ -120,7 +124,7 @@ export const renderConfirm = (
           />
         </div>
         <div className={style.one_input_wrapper}>
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone">Phone*</label>
           <input
             id="phone"
             required
@@ -133,7 +137,23 @@ export const renderConfirm = (
           <button className={style.basket_button} onClick={() => setStatus(0)}>
             Back to basket
           </button>
-          <input type="submit" className={style.basket_button} value="Create order" onClick={() => sendOrder(name, phone, order).then(() => setStatus(2))}/>
+          <input
+            disabled={!checkDisable(name, phone, order)}
+            type="submit"
+            className={`${style.basket_button} ${
+              checkDisable(name, phone, order) ? "" : style.disabled
+            }`}
+            value="Create order"
+            onClick={() =>
+              sendOrder(name, phone, order)
+                .then(() => {
+                  setStatus(2);
+                  getProducts().then(res => setData(res));
+                  getOrders().then(res => setOrders(res));
+                  setOrder({})
+                })
+            }
+          />
         </div>
       </form>
     </>
@@ -142,19 +162,24 @@ export const renderConfirm = (
 
 export async function sendOrder(name, phone, products) {
   const url = "https://sheltered-depths-11645.herokuapp.com/orders";
-  const response = await fetch(url, {
-  method: "post",
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
-  },
+  const response = await fetch(
+    url,
+    {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
 
-  body: JSON.stringify({
-    name, phone, products
-  })
-}, {mode: 'no-cors'})
+      body: JSON.stringify({
+        name,
+        phone,
+        products
+      })
+    },
+    { mode: "no-cors" }
+  );
   const myJson = await response.json();
   return myJson;
 }
-

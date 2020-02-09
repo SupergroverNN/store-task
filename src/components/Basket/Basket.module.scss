@@ -116,6 +116,14 @@
           transition: all 0.3s ease;
         }
       }
+      .disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        &:hover {
+          color: inherit;
+          background-color: inherit;
+        }
+      }
     }
   }
   input::-webkit-outer-spin-button,
